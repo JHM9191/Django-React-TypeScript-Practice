@@ -11,9 +11,9 @@ python manage.py runserver
 ```
 
 ### 새로운 페이지 생성하는 방법
-1. frontend > containers 디렉토리에 새로운 폴더를 생성하고 하위에 `index.tsx`를 생성한다.
-2. index.tsx을 수정한다.
-3. frontend > routes > index.ts에 추가된 페이지의 경로를 추가한다.
+1. `frontend > containers` 디렉토리에 새로운 폴더를 생성하고 하위에 `index.tsx`를 생성한다.
+2. `index.tsx`을 수정한다.
+3. `frontend > routes > index.ts`에 추가된 페이지의 경로를 추가한다.
     ```typescript
         export enum ROUTES {
             .
@@ -24,7 +24,7 @@ python manage.py runserver
     ```
     - `CVAT_TASKLIST`는 내가 지정해주는 이름이다.
     - `cvat-tasklist`는 새롭게 만든 폴더의 이름이어야 한다.
-4. frontend > containers > Routes > index.tsx를 수정해 준다.
+4. `frontend > containers > Routes > index.tsx`를 수정해 준다.
     ```typescript
         const cvatTaskList = loadable(() => import("../cvat-tasklist"), {
         ssr: true,
@@ -50,7 +50,7 @@ python manage.py runserver
             );
         };
     ```
-5. frontend > urls.py을 수정해준다.
+5. `frontend > urls.py`을 수정해준다.
     ```python
         urlpatterns = [
         re_path(r'^biography$|^blog$|^mypage$|^mydatapage$|^cvattasklist$|^$', views.index, name='frontend'),
@@ -58,7 +58,7 @@ python manage.py runserver
         # path('mypage', views.mypage, name='frontend')
     ]
     ```
-6. frontend > components > Headers > Nav > index.tsx를 수정해준다.
+6. `frontend > components > Headers > Nav > index.tsx`를 수정해준다.
     ```typescript
         export const Nav: React.FC<IProps> = ({ pinned }) => {
             .
