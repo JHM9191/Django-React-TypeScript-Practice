@@ -16,6 +16,7 @@ import { Image, Column, Row, Box } from "../../base";
 import { Card } from "../../components/Card";
 import { theme } from "../../utils/theme";
 import { BackButton } from "../../components/BackButton";
+import { Header } from "../../components/Header";
 
 
 // const MyDataPage: React.FC = () => {
@@ -52,13 +53,16 @@ const MyDataPage: React.FC<IProps> = ({ paginatedPublications, blogPost }) => {
   const [data, setData] = React.useState<IGetPaginatedPublicationsResponse>();
   const [isLoading, setIsLoading] = React.useState(false);
   const { getPaginatedPublications } = useApi();
+  const { width } = useViewport();
 
   React.useEffect(() => {
     getData();
   }, []);
 
   const { TITLE, READ_MORE } = DATA_PAGE;
-
+  const FIRST_PUBLICATION_BREAKPOINT = 995;
+  const FIRST_PUBLICATION_SECONDARY_BREAKPOINT = 870;
+  const FIRST_PUBLICATION_TERTIARY_BREAKPOINT = 500;
   const getData = async (args?: {
     querystring?: string;
     page?: number;
@@ -71,6 +75,66 @@ const MyDataPage: React.FC<IProps> = ({ paginatedPublications, blogPost }) => {
 
   return (
     <>
+    <Row>
+      <Column
+        style={{
+          minWidth:
+            width < FIRST_PUBLICATION_BREAKPOINT
+              ? 318
+              : width <
+                FIRST_PUBLICATION_SECONDARY_BREAKPOINT
+              ? "auto"
+              : "calc(100% + 32px)",
+          marginLeft:
+            width < FIRST_PUBLICATION_SECONDARY_BREAKPOINT
+              ? 0
+              : -26,
+          position: "relative",
+        }}
+      >
+        <Text
+          fontSize={32}
+          lineHeight={42}
+          fontWeight={500}
+          style={{
+            maxWidth: 509,
+            paddingBottom: 25,
+            color: 'red',
+          }}
+        >
+            Title
+        </Text>
+      </Column>
+      <Column
+        style={{
+          minWidth:
+            width < FIRST_PUBLICATION_BREAKPOINT
+              ? 318
+              : width <
+                FIRST_PUBLICATION_SECONDARY_BREAKPOINT
+              ? "auto"
+              : "calc(100% + 32px)",
+          marginLeft:
+            width < FIRST_PUBLICATION_SECONDARY_BREAKPOINT
+              ? 0
+              : -26,
+          position: "relative",
+        }}
+      >
+        <Text
+          fontSize={32}
+          lineHeight={42}
+          fontWeight={500}
+          style={{
+            maxWidth: 509,
+            paddingBottom: 25,
+            color: 'red',
+          }}
+        >
+            Body
+        </Text>
+      </Column>
+    </Row>
     {isLoading && <Loading height={"100vh"} width={"100vw"} />}
     {!isLoading && data && (
       <>
@@ -82,17 +146,64 @@ const MyDataPage: React.FC<IProps> = ({ paginatedPublications, blogPost }) => {
             return (
               <>
               <ScrollToTop />
-                        <Text
-                          fontSize={32}
-                          lineHeight={42}
-                          fontWeight={500}
-                          style={{
-                            maxWidth: 509,
-                            paddingBottom: 25,
-                          }}
-                        >
+                <Row>
+                    <Column
+                      style={{
+                        minWidth:
+                          width < FIRST_PUBLICATION_BREAKPOINT
+                            ? 318
+                            : width <
+                              FIRST_PUBLICATION_SECONDARY_BREAKPOINT
+                            ? "auto"
+                            : "calc(100% + 32px)",
+                        marginLeft:
+                          width < FIRST_PUBLICATION_SECONDARY_BREAKPOINT
+                            ? 0
+                            : -26,
+                        position: "relative",
+                      }}
+                    >
+                      <Text
+                        fontSize={32}
+                        lineHeight={42}
+                        fontWeight={500}
+                        style={{
+                          maxWidth: 509,
+                          paddingBottom: 25,
+                        }}
+                      >
                           {blogPost.title}
-                        </Text>
+                      </Text>
+                    </Column>
+                    <Column
+                      style={{
+                        minWidth:
+                          width < FIRST_PUBLICATION_BREAKPOINT
+                            ? 318
+                            : width <
+                              FIRST_PUBLICATION_SECONDARY_BREAKPOINT
+                            ? "auto"
+                            : "calc(100% + 32px)",
+                        marginLeft:
+                          width < FIRST_PUBLICATION_SECONDARY_BREAKPOINT
+                            ? 0
+                            : -26,
+                        position: "relative",
+                      }}
+                    >
+                      <Text
+                        fontSize={32}
+                        lineHeight={42}
+                        fontWeight={500}
+                        style={{
+                          maxWidth: 509,
+                          paddingBottom: 25,
+                        }}
+                      >
+                          {blogPost.body}
+                      </Text>
+                    </Column>
+                  </Row>
                 </>
             );
           })

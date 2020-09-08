@@ -150,6 +150,28 @@ export const Nav: React.FC<IProps> = ({ pinned }) => {
                 >
                   My Data
                 </Text>
+                <Text
+                  fontSize={18}
+                  lineHeight={25}
+                  style={{
+                    cursor: "pointer",
+                    margin: "0px 16px",
+                    display: "flex",
+                    alignItems: "center",
+                    color: theme.color.white1,
+                    whiteSpace: "nowrap",
+                    fontWeight:
+                      history.location.pathname === ROUTES.CVAT_TASKLIST
+                        ? "bold"
+                        : "normal",
+                  }}
+                  onClick={() => {
+                    setIsOpen(false);
+                    push(ROUTES.CVAT_TASKLIST);
+                  }}
+                >
+                  CVAT Task List
+                </Text>
               </>
             </RightSide>
           </StyledHeader>

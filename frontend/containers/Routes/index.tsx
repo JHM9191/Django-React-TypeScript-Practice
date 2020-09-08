@@ -33,6 +33,10 @@ const MyDataPage = loadable(() => import("../MyDataPage"), {
   ssr: true,
   fallback: <Loading height={"100vh"} width={"100vw"} />,
 });
+const cvatTaskList = loadable(() => import("../cvat-tasklist"), {
+  ssr: true,
+  fallback: <Loading height={"100vh"} width={"100vw"} />,
+});
 
 export const Routes = () => {
   const { history } = useRouter();
@@ -83,6 +87,11 @@ export const Routes = () => {
             path={ROUTES.MYDATAPAGE}
             exact
             component={MyDataPage}
+          />
+          <Route
+            path={ROUTES.CVAT_TASKLIST}
+            exact
+            component={cvatTaskList}
           />
           <div
             style={{
