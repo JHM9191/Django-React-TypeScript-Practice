@@ -50,6 +50,12 @@ export const LANDING_PAGE = {
     },
   },
 };
+
+export const DATA_PAGE = {
+  TITLE: "Django-React-Typescript Data Page",
+  READ_MORE: BASE.READ_MORE,
+};
+
 export const API = {
   POST_SUBSCRIBER: {
     ERROR: "Something went wrong while trying to subscribe",

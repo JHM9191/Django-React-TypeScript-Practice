@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 
 def index(request):
     endpoint = request.META.get('PATH_INFO', None)
-
+    print(endpoint)
     if (endpoint == '/admin'):
         return redirect('/admin/')
 

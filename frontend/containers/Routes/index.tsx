@@ -25,6 +25,14 @@ const PublicationPage = loadable(() => import("../PublicationPage"), {
   ssr: true,
   fallback: <Loading height={"100vh"} width={"100vw"} />,
 });
+const MyPage = loadable(() => import("../MyPage"), {
+  ssr: true,
+  fallback: <Loading height={"100vh"} width={"100vw"} />,
+});
+const MyDataPage = loadable(() => import("../MyDataPage"), {
+  ssr: true,
+  fallback: <Loading height={"100vh"} width={"100vw"} />,
+});
 
 export const Routes = () => {
   const { history } = useRouter();
@@ -46,6 +54,10 @@ export const Routes = () => {
                 ? "Home"
                 : history.location.pathname === ROUTES.BLOG
                 ? "Blog"
+                : history.location.pathname === ROUTES.MYPAGE
+                ? "MyPage"
+                : history.location.pathname === ROUTES.MYDATAPAGE
+                ? "MyDataPage"
                 : titlefy(
                     history.location.pathname.replace(ROUTES.BLOG + "/", "")
                   )
@@ -61,6 +73,16 @@ export const Routes = () => {
             path={ROUTES.PUBLICATION_PAGE}
             exact
             component={PublicationPage}
+          />
+          <Route
+            path={ROUTES.MYPAGE}
+            exact
+            component={MyPage}
+          />
+          <Route
+            path={ROUTES.MYDATAPAGE}
+            exact
+            component={MyDataPage}
           />
           <div
             style={{

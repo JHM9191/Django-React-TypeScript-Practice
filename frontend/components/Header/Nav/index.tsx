@@ -106,6 +106,50 @@ export const Nav: React.FC<IProps> = ({ pinned }) => {
                 >
                   Blog
                 </Text>
+                <Text
+                  fontSize={18}
+                  lineHeight={25}
+                  style={{
+                    cursor: "pointer",
+                    margin: "0px 16px",
+                    display: "flex",
+                    alignItems: "center",
+                    color: theme.color.white1,
+                    whiteSpace: "nowrap",
+                    fontWeight:
+                      history.location.pathname === ROUTES.MYPAGE
+                        ? "bold"
+                        : "normal",
+                  }}
+                  onClick={() => {
+                    setIsOpen(false);
+                    push(ROUTES.MYPAGE);
+                  }}
+                >
+                  My Page
+                </Text>
+                <Text
+                  fontSize={18}
+                  lineHeight={25}
+                  style={{
+                    cursor: "pointer",
+                    margin: "0px 16px",
+                    display: "flex",
+                    alignItems: "center",
+                    color: theme.color.white1,
+                    whiteSpace: "nowrap",
+                    fontWeight:
+                      history.location.pathname === ROUTES.MYDATAPAGE
+                        ? "bold"
+                        : "normal",
+                  }}
+                  onClick={() => {
+                    setIsOpen(false);
+                    push(ROUTES.MYDATAPAGE);
+                  }}
+                >
+                  My Data
+                </Text>
               </>
             </RightSide>
           </StyledHeader>
